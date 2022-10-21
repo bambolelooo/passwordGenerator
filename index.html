@@ -67,21 +67,18 @@
                             />
                         </label>
                     </div>
-                    <form oninput="result.value = qttyOfChars.value">
-                        <label for="qttyOfChars" class="resultOutput"
+                    <form oninput="result.value = pwdLen.value">
+                        <label for="pwdLen" class="resultOutput"
                             >Characters</label
                         >
                         <input
                             type="range"
-                            value="25"
+                            value="8"
                             min="8"
                             max="128"
-                            id="qttyOfChars"
+                            id="pwdLen"
                         />
-                        <output
-                            name="result"
-                            for="qttyOfChars"
-                            class="resultOutput"
+                        <output name="result" for="pwdLen" class="resultOutput"
                             >8
                         </output>
                     </form>
