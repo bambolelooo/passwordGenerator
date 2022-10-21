@@ -1,34 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Password Generator</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>Password Generator</h1>
+            </header>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Generate a Password</h2>
+                </div>
+                <div class="card-body">
+                    <textarea
+                        readonly
+                        id="password"
+                        placeholder="Your Secure Password"
+                        aria-label="Generated Password"
+                    ></textarea>
+                </div>
+                <div class="card-footer">
+                    <div class="checkboxes">
+                        <label class="checkboxContainer" for="lowerCase"
+                            >Lower case
+                            <input
+                                type="checkbox"
+                                id="lowerCase"
+                                name="lowerCase"
+                                value="yes"
+                                checked="checked"
+                            />
+                        </label>
+
+                        <label class="checkboxContainer" for="upperCase"
+                            >Upper case
+                            <input
+                                type="checkbox"
+                                id="upperCase"
+                                name="upperCase"
+                                value="yes"
+                            />
+                        </label>
+
+                        <label class="checkboxContainer" for="numbers"
+                            >Numbers
+                            <input
+                                type="checkbox"
+                                id="numbers"
+                                name="numbers"
+                                value="yes"
+                            />
+                        </label>
+
+                        <label class="checkboxContainer" for="specialChars"
+                            >Special characters
+                            <input
+                                type="checkbox"
+                                id="specialChars"
+                                name="specialChars"
+                                value="yes"
+                            />
+                        </label>
+                    </div>
+                    <form oninput="result.value = qttyOfChars.value">
+                        <label for="qttyOfChars" class="resultOutput"
+                            >Characters</label
+                        >
+                        <input
+                            type="range"
+                            value="25"
+                            min="8"
+                            max="128"
+                            id="qttyOfChars"
+                        />
+                        <output
+                            name="result"
+                            for="qttyOfChars"
+                            class="resultOutput"
+                            >8
+                        </output>
+                    </form>
+
+                    <button id="generate" class="btn">Generate Password</button>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+        <script src="javascript/script.js"></script>
+    </body>
 </html>
