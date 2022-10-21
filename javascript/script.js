@@ -6,6 +6,19 @@ const upperLetters = lowerLetters.toUpperCase();
 const numbers = "0123456789";
 const specialChars = ` !\"#$%&\'()*+,-./:;<=>?@[\]^_\`{|}~`;
 
+// checkboxes
+const lowerLettersCb = document.querySelector("#accept");
+const upperLettersCb = document.querySelector("#accept");
+const numbersCb = document.querySelector("#accept");
+const specialCharsCb = document.querySelector("#accept");
+
+// range input
+const qttyOfCharsRange = document.querySelector("#qttyOfChars");
+
+function generatePassword() {
+    let charSet = "";
+}
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
