@@ -121,6 +121,7 @@ button[disabled] {
     float: right;
 }
 
+/* class for hiding checkboxes untill the button is clicked */
 .hideUntilButtonClick {
     display: none;
 }
