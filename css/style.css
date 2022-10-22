@@ -121,6 +121,10 @@ button[disabled] {
     float: right;
 }
 
+.hideUntilButtonClick {
+    display: none;
+}
+
 #password {
     -webkit-appearance: none;
     -moz-appearance: none;
