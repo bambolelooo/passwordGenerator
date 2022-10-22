@@ -6,7 +6,7 @@ const upperLetters = lowerLetters.toUpperCase();
 const numbers = `0123456789`.repeat(429);
 const specialChars = ` !\"#$%&\'()*+,-./:;<=>?@[\]^_\`{|}~`.repeat(130);
 // multiplication so there is 4290 of each type of characters
-// stupid method i know, but javascript lets us use 2^53-1 elements:)
+// stupid method i know, but javascript lets us use 2^53-1 elements in one string:)
 
 // checkboxes
 const lowerLettersCb = document.querySelector("#lowerCase");
@@ -21,7 +21,6 @@ function generatePassword() {
     let charSet = ``;
     let pwdLen = pwdLenRange.value;
     let pwd = ``;
-    console.log(`pwdLen = ${pwdLen}`);
     if (lowerLettersCb.checked) {
         charSet = charSet + lowerLetters;
     }
@@ -37,7 +36,6 @@ function generatePassword() {
     if (specialCharsCb.checked) {
         charSet = charSet + specialChars;
     }
-    console.log(`charSet = ${charSet}`);
     if (charSet.length === 0) {
         return `Check at least one box`;
     } else {
@@ -87,6 +85,7 @@ function generatePassword() {
                 containsUpperLettersIfSelected;
         }
     }
+    console.log(`Password ${pwd} generated`);
     return pwd;
 }
 
