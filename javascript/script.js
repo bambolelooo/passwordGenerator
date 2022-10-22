@@ -1,10 +1,12 @@
 // Assignment code here
 
 // adding symbols for password
-const lowerLetters = `abcdefghijklmnopqrstuvwxyz`;
+const lowerLetters = `abcdefghijklmnopqrstuvwxyz`.repeat(165);
 const upperLetters = lowerLetters.toUpperCase();
-const numbers = `0123456789`;
-const specialChars = ` !\"#$%&\'()*+,-./:;<=>?@[\]^_\`{|}~`;
+const numbers = `0123456789`.repeat(429);
+const specialChars = ` !\"#$%&\'()*+,-./:;<=>?@[\]^_\`{|}~`.repeat(130);
+// multiplication so there is 4290 of each type of characters
+// stupid method i know, but javascript lets us use 2^53-1 elements:)
 
 // checkboxes
 const lowerLettersCb = document.querySelector("#lowerCase");
@@ -49,6 +51,7 @@ function generatePassword() {
 
         let ok = false;
         while (ok !== true) {
+            pwd = ``;
             for (let i = 0; i < pwdLen; i++) {
                 pwd += charSet.charAt(Math.floor(Math.random() * charSetLen));
             }
@@ -91,11 +94,19 @@ function generatePassword() {
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
+let counter = 0;
 function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
+    if (counter > 0) {
+        var password = generatePassword();
+        var passwordText = document.querySelector("#password");
+        passwordText.value = password;
+    } else {
+        let hiddenDivs = document.querySelectorAll(".hideUntilButtonClick");
+        hiddenDivs.forEach((hidden) => {
+            hidden.classList.remove("hideUntilButtonClick");
+        });
+        counter++;
+    }
 }
 
 // Add event listener to generate button
