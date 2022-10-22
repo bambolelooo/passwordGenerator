@@ -1,5 +1,5 @@
 // Assignment code here
-
+"use strict";
 // adding symbols for password
 const lowerLetters = `abcdefghijklmnopqrstuvwxyz`.repeat(165);
 const upperLetters = lowerLetters.toUpperCase();
@@ -18,75 +18,79 @@ const specialCharsCb = document.querySelector("#specialChars");
 const pwdLenRange = document.querySelector("#pwdLen");
 
 function generatePassword() {
+    // initial values
     let charSet = ``;
     let pwdLen = pwdLenRange.value;
     let pwd = ``;
+
+    // setup charset
     if (lowerLettersCb.checked) {
-        charSet = charSet + lowerLetters;
+        charSet += lowerLetters;
     }
 
     if (upperLettersCb.checked) {
-        charSet = charSet + upperLetters;
+        charSet += upperLetters;
     }
 
     if (numbersCb.checked) {
-        charSet = charSet + numbers;
+        charSet += numbers;
     }
 
     if (specialCharsCb.checked) {
-        charSet = charSet + specialChars;
+        charSet += specialChars;
     }
-    if (charSet.length === 0) {
+
+    // if no checked boxes
+    if (charSet === ``) {
         return `Check at least one box`;
     } else {
-        let charSetLen = charSet.length;
-
         // buffer bools to confirm that all selected chars present in the password
         let containsNumbersIfSelected = true;
         let containsUpperLettersIfSelected = true;
         let containsLowerLettersIfSelected = true;
         let containsSpecialCharsIfSelected = true;
-
         let ok = false;
+
         while (ok !== true) {
             pwd = ``;
             for (let i = 0; i < pwdLen; i++) {
-                pwd += charSet.charAt(Math.floor(Math.random() * charSetLen));
+                pwd += charSet.charAt(
+                    Math.floor(Math.random() * charSet.length)
+                );
             }
 
-            if (numbersCb.checked) {
-                if (/[0-9]+/.test(pwd)) {
-                    containsNumbersIfSelected = true;
-                } else containsNumbersIfSelected = false;
-            }
+            //checks if password contains numbers
+            containsNumbersIfSelected = numbersCb.checked
+                ? /[0-9]/.test(pwd)
+                : true;
 
-            if (upperLettersCb.checked) {
-                if (/[A-Z]+/.test(pwd)) {
-                    containsUpperLettersIfSelected = true;
-                } else containsUpperLettersIfSelected = false;
-            }
+            //checks if password contains upper case
+            containsUpperLettersIfSelected = upperLettersCb.checked
+                ? /[A-Z]/.test(pwd)
+                : true;
 
-            if (lowerLettersCb.checked) {
-                if (/[a-z]+/.test(pwd)) {
-                    containsLowerLettersIfSelected = true;
-                } else containsLowerLettersIfSelected = false;
-            }
+            //checks if password contains lower case
+            containsLowerLettersIfSelected = lowerLettersCb.checked
+                ? /[a-z]/.test(pwd)
+                : true;
 
-            if (specialCharsCb.checked) {
-                if (/[ !\\"#$%&'()*+,\-./:;<=>?@[\]^_\`{|}~]/.test(pwd)) {
-                    containsLowerLettersIfSelected = true;
-                } else containsLowerLettersIfSelected = false;
-            }
+            //checks if password contains special chars
+            containsSpecialCharsIfSelected = specialCharsCb.checked
+                ? /[ !\\"#$%&'()*+,\-./:;<=>?@[\]^_\`{|}~]/.test(pwd)
+                : true;
 
+            // false until all types of chars present in password
             ok =
                 containsSpecialCharsIfSelected &&
                 containsLowerLettersIfSelected &&
                 containsNumbersIfSelected &&
                 containsUpperLettersIfSelected;
         }
+        // log generated password in console
+        console.log(`Password ${pwd} generated`);
+        // return generated password
+        return pwd;
     }
-    console.log(`Password ${pwd} generated`);
-    return pwd;
 }
 
 // Get references to the #generate element
