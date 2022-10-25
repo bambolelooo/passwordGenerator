@@ -24,21 +24,10 @@ function generatePassword() {
     let pwd = ``;
 
     // setup charset
-    if (lowerLettersCb.checked) {
-        charSet += lowerLetters;
-    }
-
-    if (upperLettersCb.checked) {
-        charSet += upperLetters;
-    }
-
-    if (numbersCb.checked) {
-        charSet += numbers;
-    }
-
-    if (specialCharsCb.checked) {
-        charSet += specialChars;
-    }
+    charSet += lowerLettersCb.checked ? lowerLetters : ``;
+    charSet += upperLettersCb.checked ? upperLetters : ``;
+    charSet += numbersCb.checked ? numbers : ``;
+    charSet += specialCharsCb.checked ? specialChars : ``;
 
     // if no checked boxes
     if (charSet === ``) {
